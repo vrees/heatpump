@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<JcatConf>
+	<SlaveConfigs>
+		<SlaveConfig alias="0" position="0" vendorId="2" productCode="72100946" watchdogDivider="0" watchdogIntervals="0">
+			<description>EK1100</description>
+			<SynchManConfigs />
+			<FmmuConfigs />
+			<SdoConfigs />
+		</SlaveConfig>
+		<SlaveConfig alias="0" position="1" vendorId="2" productCode="206581842" watchdogDivider="2498" watchdogIntervals="10000">
+			<description>EL3152</description>
+			<SynchManConfigs>
+				<SynchManConfig synchManIndex="2" direction="OUTPUT" watchdogMode="DEFAULT" description="SM2" logicalStartAddress="0">
+					<PdoConfigs />
+				</SynchManConfig>
+				<SynchManConfig synchManIndex="3" direction="INPUT" watchdogMode="DEFAULT" description="SM3" logicalStartAddress="0">
+					<PdoConfigs>
+						<PdoConfig logicalStartAddress="0">
+							<description>TxPDO 001</description>
+							<ioConfig ioName="Hochdruck" unitName="BAR" isActive="true" adapterClass="de.vrees.ecat.io.device.DeviceAdapterEL3152" minVal="0" maxVal="18.0" />
+							<PdoEntryConfigs>
+								<PdoEntryConfig index="12545" subIndex="1" bitLength="8" bitMask="0" description="Channel 1: Status" />
+								<PdoEntryConfig index="12545" subIndex="2" bitLength="16" bitMask="0" description="Channel 1: Value" />
+							</PdoEntryConfigs>
+						</PdoConfig>
+						<PdoConfig logicalStartAddress="3">
+							<description>TxPDO 002</description>
+							<ioConfig ioName="Niederdruck" unitName="BAR" isActive="true" adapterClass="de.vrees.ecat.io.device.DeviceAdapterEL3152" minVal="-0.5" maxVal="7.0" />
+							<PdoEntryConfigs>
+								<PdoEntryConfig index="12546" subIndex="1" bitLength="8" bitMask="0" description="Channel 2: Status" />
+								<PdoEntryConfig index="12546" subIndex="2" bitLength="16" bitMask="0" description="Channel 2: Value" />
+							</PdoEntryConfigs>
+						</PdoConfig>
+					</PdoConfigs>
+				</SynchManConfig>
+			</SynchManConfigs>
+			<FmmuConfigs />
+			<SdoConfigs />
+		</SlaveConfig>
+		<SlaveConfig alias="0" position="2" vendorId="2" productCode="131346514" watchdogDivider="2498" watchdogIntervals="10000">
+			<description>EL2004</description>
+			<SynchManConfigs>
+				<SynchManConfig synchManIndex="0" direction="OUTPUT" watchdogMode="DEFAULT" description="SM0" logicalStartAddress="6">
+					<PdoConfigs>
+						<PdoConfig logicalStartAddress="6">
+							<description>Channel 1</description>
+							<ioConfig ioName="StatusVerdichter" unitName="NONE" isActive="false" adapterClass="de.vrees.ecat.io.device.DeviceAdapterEL2004" />
+							<PdoEntryConfigs>
+								<PdoEntryConfig index="28672" subIndex="1" bitLength="1" bitMask="1" description="Output" />
+							</PdoEntryConfigs>
+						</PdoConfig>
+						<PdoConfig logicalStartAddress="6">
+							<description>Channel 2</description>
+							<ioConfig ioName="Heizungspumpe" unitName="NONE" isActive="false" adapterClass="de.vrees.ecat.io.device.DeviceAdapterEL2004" />
+							<PdoEntryConfigs>
+								<PdoEntryConfig index="28688" subIndex="1" bitLength="1" bitMask="2" description="Output" />
+							</PdoEntryConfigs>
+						</PdoConfig>
+						<PdoConfig logicalStartAddress="6">
+							<description>Channel 3</description>
+							<ioConfig ioName="Reserve DigAus3" unitName="NONE" isActive="false" adapterClass="de.vrees.ecat.io.device.DeviceAdapterEL2004" />
+							<PdoEntryConfigs>
+								<PdoEntryConfig index="28704" subIndex="1" bitLength="1" bitMask="4" description="Output" />
+							</PdoEntryConfigs>
+						</PdoConfig>
+						<PdoConfig logicalStartAddress="6">
+							<description>Channel 4</description>
+							<ioConfig ioName="Reserve DigAus4" unitName="NONE" isActive="false" adapterClass="de.vrees.ecat.io.device.DeviceAdapterEL2004" />
+							<PdoEntryConfigs>
+								<PdoEntryConfig index="28720" subIndex="1" bitLength="1" bitMask="8" description="Output" />
+							</PdoEntryConfigs>
+						</PdoConfig>
+					</PdoConfigs>
+				</SynchManConfig>
+			</SynchManConfigs>
+			<FmmuConfigs />
+			<SdoConfigs />
+		</SlaveConfig>
+		<SlaveConfig alias="0" position="3" vendorId="2" productCode="209989714" watchdogDivider="2498" watchdogIntervals="10000">
+			<description>EL3204</description>
+			<SynchManConfigs>
+				<SynchManConfig synchManIndex="2" direction="OUTPUT" watchdogMode="DISABLE" description="SM2" logicalStartAddress="7">
+					<PdoConfigs />
+				</SynchManConfig>
+				<SynchManConfig synchManIndex="3" direction="INPUT" watchdogMode="DISABLE" description="SM3" logicalStartAddress="7">
+					<PdoConfigs>
+						<PdoConfig logicalStartAddress="7">
+							<ioConfig ioName="VerdampfungsTempOut" unitName="CELSIUS" isActive="true" adapterClass="de.vrees.ecat.io.device.DeviceAdapterEL3204" minVal="0"
+								maxVal="10" />
+							<PdoEntryConfigs>
+								<PdoEntryConfig index="24576" subIndex="1" bitLength="1" bitMask="0" description="Entry 1" />
+								<PdoEntryConfig index="24576" subIndex="2" bitLength="1" bitMask="0" description="Entry 2" />
+								<PdoEntryConfig index="24576" subIndex="3" bitLength="2" bitMask="0" description="Entry 3" />
+								<PdoEntryConfig index="24576" subIndex="5" bitLength="2" bitMask="0" description="Entry 4" />
+								<PdoEntryConfig index="24576" subIndex="7" bitLength="1" bitMask="0" description="Entry 5" />
+								<PdoEntryConfig index="0" subIndex="0" bitLength="7" bitMask="0" description="Entry 6" />
+								<PdoEntryConfig index="6144" subIndex="7" bitLength="1" bitMask="0" description="Entry 7" />
+								<PdoEntryConfig index="6144" subIndex="9" bitLength="1" bitMask="0" description="Entry 8" />
+								<PdoEntryConfig index="24576" subIndex="17" bitLength="16" bitMask="0" description="Entry 9" />
+							</PdoEntryConfigs>
+						</PdoConfig>
+						<PdoConfig logicalStartAddress="11">
+							<ioConfig ioName="VerdampfungsTempIn" unitName="CELSIUS" isActive="true" adapterClass="de.vrees.ecat.io.device.DeviceAdapterEL3204" minVal="0"
+								maxVal="10" />
+							<PdoEntryConfigs>
+								<PdoEntryConfig index="24592" subIndex="1" bitLength="1" bitMask="0" description="Entry 1" />
+								<PdoEntryConfig index="24592" subIndex="2" bitLength="1" bitMask="0" description="Entry 2" />
+								<PdoEntryConfig index="24592" subIndex="3" bitLength="2" bitMask="0" description="Entry 3" />
+								<PdoEntryConfig index="24592" subIndex="5" bitLength="2" bitMask="0" description="Entry 4" />
+								<PdoEntryConfig index="24592" subIndex="7" bitLength="1" bitMask="0" description="Entry 5" />
+								<PdoEntryConfig index="0" subIndex="0" bitLength="7" bitMask="0" description="Entry 6" />
+								<PdoEntryConfig index="6145" subIndex="7" bitLength="1" bitMask="0" description="Entry 7" />
+								<PdoEntryConfig index="6145" subIndex="9" bitLength="1" bitMask="0" description="Entry 8" />
+								<PdoEntryConfig index="24592" subIndex="17" bitLength="16" bitMask="0" description="Entry 9" />
+							</PdoEntryConfigs>
+						</PdoConfig>
+						<PdoConfig logicalStartAddress="15">
+							<ioConfig ioName="VorlaufTemperatur" unitName="CELSIUS" isActive="false" adapterClass="de.vrees.ecat.io.device.DeviceAdapterEL3204" minVal="0"
+								maxVal="10" />
+							<PdoEntryConfigs>
+								<PdoEntryConfig index="24608" subIndex="1" bitLength="1" bitMask="0" description="Entry 1" />
+								<PdoEntryConfig index="24608" subIndex="2" bitLength="1" bitMask="0" description="Entry 2" />
+								<PdoEntryConfig index="24608" subIndex="3" bitLength="2" bitMask="0" description="Entry 3" />
+								<PdoEntryConfig index="24608" subIndex="5" bitLength="2" bitMask="0" description="Entry 4" />
+								<PdoEntryConfig index="24608" subIndex="7" bitLength="1" bitMask="0" description="Entry 5" />
+								<PdoEntryConfig index="0" subIndex="0" bitLength="7" bitMask="0" description="Entry 6" />
+								<PdoEntryConfig index="6146" subIndex="7" bitLength="1" bitMask="0" description="Entry 7" />
+								<PdoEntryConfig index="6146" subIndex="9" bitLength="1" bitMask="0" description="Entry 8" />
+								<PdoEntryConfig index="24608" subIndex="17" bitLength="16" bitMask="0" description="Entry 9" />
+							</PdoEntryConfigs>
+						</PdoConfig>
+						<PdoConfig logicalStartAddress="19">
+							<ioConfig ioName="RuecklaufTemperatur" unitName="CELSIUS" isActive="false" adapterClass="de.vrees.ecat.io.device.DeviceAdapterEL3204" minVal="0"
+								maxVal="10" />
+							<PdoEntryConfigs>
+								<PdoEntryConfig index="24624" subIndex="1" bitLength="1" bitMask="0" description="Entry 1" />
+								<PdoEntryConfig index="24624" subIndex="2" bitLength="1" bitMask="0" description="Entry 2" />
+								<PdoEntryConfig index="24624" subIndex="3" bitLength="2" bitMask="0" description="Entry 3" />
+								<PdoEntryConfig index="24624" subIndex="5" bitLength="2" bitMask="0" description="Entry 4" />
+								<PdoEntryConfig index="24624" subIndex="7" bitLength="1" bitMask="0" description="Entry 5" />
+								<PdoEntryConfig index="0" subIndex="0" bitLength="7" bitMask="0" description="Entry 6" />
+								<PdoEntryConfig index="6147" subIndex="9" bitLength="1" bitMask="0" description="Entry 8" />
+								<PdoEntryConfig index="24624" subIndex="17" bitLength="16" bitMask="0" description="Entry 9" />
+							</PdoEntryConfigs>
+						</PdoConfig>
+					</PdoConfigs>
+				</SynchManConfig>
+			</SynchManConfigs>
+			<FmmuConfigs />
+			<SdoConfigs>
+				<SdoConfig description="Channel 1: PT1000" index="32768" subIndex="25" size="16" value="2" />
+				<SdoConfig description="Channel 2: PT1000" index="32784" subIndex="25" size="16" value="2" />
+				<SdoConfig description="Channel 3: PT1000" index="32800" subIndex="25" size="16" value="2" />
+				<SdoConfig description="Channel 4: PT1000" index="32816" subIndex="25" size="16" value="2" />
+<!--
+				<SdoConfig description="Channel 3: PT500" index="32800" subIndex="25" size="16" value="3" />
+				<SdoConfig description="Channel 4: PT100" index="32816" subIndex="25" size="16" value="0" />
+-->
+			</SdoConfigs>
+		</SlaveConfig>
+		<SlaveConfig alias="0" position="4" vendorId="2" productCode="203305042" watchdogDivider="2498" watchdogIntervals="10000">
+			<description>EL3102</description>
+			<SynchManConfigs>
+				<SynchManConfig synchManIndex="2" direction="OUTPUT" watchdogMode="DEFAULT" description="SM2" logicalStartAddress="23">
+					<PdoConfigs />
+				</SynchManConfig>
+				<SynchManConfig synchManIndex="3" direction="INPUT" watchdogMode="DEFAULT" description="SM3" logicalStartAddress="23">
+					<PdoConfigs>
+						<PdoConfig logicalStartAddress="23">
+							<ioConfig ioName="DruckdifferenzVerdampfer" unitName="MBAR" isActive="true" adapterClass="de.vrees.ecat.io.device.DeviceAdapterEL3102"
+								minVal="0" maxVal="200" />
+							<PdoEntryConfigs>
+								<PdoEntryConfig index="12545" subIndex="1" bitLength="8" bitMask="0" description="Entry 1" />
+								<PdoEntryConfig index="12545" subIndex="2" bitLength="16" bitMask="0" description="Entry 2" />
+							</PdoEntryConfigs>
+						</PdoConfig>
+						<PdoConfig logicalStartAddress="26">
+							<ioConfig ioName="Reserve AnaIn1" unitName="NONE" isActive="false" adapterClass="de.vrees.ecat.io.device.DeviceAdapterEL3102" minVal="0" maxVal="10" />
+							<PdoEntryConfigs>
+								<PdoEntryConfig index="12546" subIndex="1" bitLength="8" bitMask="0" description="Entry 1" />
+								<PdoEntryConfig index="12546" subIndex="2" bitLength="16" bitMask="0" description="Entry 2" />
+							</PdoEntryConfigs>
+						</PdoConfig>
+					</PdoConfigs>
+				</SynchManConfig>
+			</SynchManConfigs>
+			<FmmuConfigs />
+			<SdoConfigs />
+		</SlaveConfig>
+		<SlaveConfig alias="0" position="5" vendorId="2" productCode="66072658" watchdogDivider="2498" watchdogIntervals="10000">
+			<description>EL1008</description>
+			<SynchManConfigs>
+				<SynchManConfig synchManIndex="0" direction="INPUT" watchdogMode="DEFAULT" description="SM0" logicalStartAddress="29">
+					<PdoConfigs>
+						<PdoConfig logicalStartAddress="29">
+							<description>Channel 1</description>
+							<ioConfig ioName="EinAusQuittierung" unitName="NONE" isActive="false" adapterClass="de.vrees.ecat.io.device.DeviceAdapterEL1008" />
+							<PdoEntryConfigs>
+								<PdoEntryConfig index="24576" subIndex="1" bitLength="1" bitMask="1" description="Eingang 1" />
+							</PdoEntryConfigs>
+						</PdoConfig>
+						<PdoConfig logicalStartAddress="29">
+							<description>Channel 2</description>
+							<ioConfig ioName="WaermeAnforderung" unitName="NONE" isActive="false" adapterClass="de.vrees.ecat.io.device.DeviceAdapterEL1008"
+								 />
+							<PdoEntryConfigs>
+								<PdoEntryConfig index="24592" subIndex="1" bitLength="1" bitMask="2" description="Eingang 2" />
+							</PdoEntryConfigs>
+						</PdoConfig>
+						<PdoConfig logicalStartAddress="29">
+							<description>Channel 3</description>
+							<ioConfig ioName="Reserve 3" unitName="NONE" isActive="false" adapterClass="de.vrees.ecat.io.device.DeviceAdapterEL1008"
+								minVal="0" maxVal="10" />
+							<PdoEntryConfigs>
+								<PdoEntryConfig index="24608" subIndex="1" bitLength="1" bitMask="4" description="Entry 3" />
+							</PdoEntryConfigs>
+						</PdoConfig>
+						<PdoConfig logicalStartAddress="29">
+							<description>Channel 4</description>
+							<ioConfig ioName="StatusHeizungspume" unitName="NONE" isActive="false" adapterClass="de.vrees.ecat.io.device.DeviceAdapterEL1008"
+								minVal="0" maxVal="10" />
+							<PdoEntryConfigs>
+								<PdoEntryConfig index="24624" subIndex="1" bitLength="1" bitMask="8" description="Entry 4" />
+							</PdoEntryConfigs>
+						</PdoConfig>
+						<PdoConfig logicalStartAddress="29">
+							<description>Channel 5</description>
+							<ioConfig ioName="StoerungVerdichter" unitName="NONE" isActive="false" adapterClass="de.vrees.ecat.io.device.DeviceAdapterEL1008"
+								minVal="0" maxVal="10" />
+							<PdoEntryConfigs>
+								<PdoEntryConfig index="24640" subIndex="1" bitLength="1" bitMask="16" description="Entry 5" />
+							</PdoEntryConfigs>
+						</PdoConfig>
+						<PdoConfig logicalStartAddress="29">
+							<description>Channel 6</description>
+							<ioConfig ioName="StoerungDurchfluss" unitName="NONE" isActive="false" adapterClass="de.vrees.ecat.io.device.DeviceAdapterEL1008"
+								minVal="0" maxVal="10" />
+							<PdoEntryConfigs>
+								<PdoEntryConfig index="24656" subIndex="1" bitLength="1" bitMask="32" description="Entry 6" />
+							</PdoEntryConfigs>
+						</PdoConfig>
+						<PdoConfig logicalStartAddress="29">
+							<description>Channel 7</description>
+							<ioConfig ioName="StoerungHochdruck" unitName="NONE" isActive="false" adapterClass="de.vrees.ecat.io.device.DeviceAdapterEL1008"
+								minVal="0" maxVal="10" />
+							<PdoEntryConfigs>
+								<PdoEntryConfig index="24672" subIndex="1" bitLength="1" bitMask="64" description="Entry 7" />
+							</PdoEntryConfigs>
+						</PdoConfig>
+						<PdoConfig logicalStartAddress="29">
+							<description>Channel 8</description>
+							<ioConfig ioName="StoerungNiederdruck" unitName="NONE" isActive="false" adapterClass="de.vrees.ecat.io.device.DeviceAdapterEL1008"
+								minVal="0" maxVal="10" />
+							<PdoEntryConfigs>
+								<PdoEntryConfig index="24688" subIndex="1" bitLength="1" bitMask="128" description="Entry 8" />
+							</PdoEntryConfigs>
+						</PdoConfig>
+					</PdoConfigs>
+				</SynchManConfig>
+			</SynchManConfigs>
+			<FmmuConfigs />
+			<SdoConfigs />
+		</SlaveConfig>
+		<SlaveConfig alias="0" position="6" vendorId="2" productCode="209989714" watchdogDivider="2498" watchdogIntervals="10000">
+			<description>EL3204</description>
+			<SynchManConfigs>
+				<SynchManConfig synchManIndex="2" direction="OUTPUT" watchdogMode="DEFAULT" description="SM2" logicalStartAddress="30">
+					<PdoConfigs />
+				</SynchManConfig>
+				<SynchManConfig synchManIndex="3" direction="INPUT"	watchdogMode="DEFAULT" description="SM3" logicalStartAddress="30">
+					<PdoConfigs>
+						<PdoConfig logicalStartAddress="30">
+							<ioConfig ioName="SaugTemperatur" unitName="CELSIUS" adapterClass="de.vrees.ecat.io.device.DeviceAdapterEL3204"
+								isActive="true" minVal="0" maxVal="10" />
+							<PdoEntryConfigs>
+								<PdoEntryConfig index="24576" subIndex="1"
+									bitLength="1" bitMask="0" description="Entry 1" />
+								<PdoEntryConfig index="24576" subIndex="2"
+									bitLength="1" bitMask="0" description="Entry 2" />
+								<PdoEntryConfig index="24576" subIndex="3"
+									bitLength="2" bitMask="0" description="Entry 3" />
+								<PdoEntryConfig index="24576" subIndex="5"
+									bitLength="2" bitMask="0" description="Entry 4" />
+								<PdoEntryConfig index="24576" subIndex="7"
+									bitLength="1" bitMask="0" description="Entry 5" />
+								<PdoEntryConfig index="0" subIndex="0" bitLength="7"
+									bitMask="0" description="Entry 6" />
+								<PdoEntryConfig index="6144" subIndex="7"
+									bitLength="1" bitMask="0" description="Entry 7" />
+								<PdoEntryConfig index="6144" subIndex="9"
+									bitLength="1" bitMask="0" description="Entry 8" />
+								<PdoEntryConfig index="24576" subIndex="17"
+									bitLength="16" bitMask="0" description="Entry 9" />
+							</PdoEntryConfigs>
+						</PdoConfig>
+						<PdoConfig logicalStartAddress="34">
+							<ioConfig ioName="SchaltFuehler" unitName="CELSIUS" adapterClass="de.vrees.ecat.io.device.DeviceAdapterEL3204"
+									  isActive="true" minVal="0" maxVal="10" />
+							<PdoEntryConfigs>
+								<PdoEntryConfig index="24592" subIndex="1"
+									bitLength="1" bitMask="0" description="Entry 1" />
+								<PdoEntryConfig index="24592" subIndex="2"
+									bitLength="1" bitMask="0" description="Entry 2" />
+								<PdoEntryConfig index="24592" subIndex="3"
+									bitLength="2" bitMask="0" description="Entry 3" />
+								<PdoEntryConfig index="24592" subIndex="5"
+									bitLength="2" bitMask="0" description="Entry 4" />
+								<PdoEntryConfig index="24592" subIndex="7"
+									bitLength="1" bitMask="0" description="Entry 5" />
+								<PdoEntryConfig index="0" subIndex="0" bitLength="7"
+									bitMask="0" description="Entry 6" />
+								<PdoEntryConfig index="6145" subIndex="7"
+									bitLength="1" bitMask="0" description="Entry 7" />
+								<PdoEntryConfig index="6145" subIndex="9"
+									bitLength="1" bitMask="0" description="Entry 8" />
+								<PdoEntryConfig index="24592" subIndex="17"
+									bitLength="16" bitMask="0" description="Entry 9" />
+							</PdoEntryConfigs>
+						</PdoConfig>
+						<PdoConfig logicalStartAddress="38">
+							<ioConfig ioName="9b8725ae-c888-45c6-bd39-a67f9f8ad25f"
+								unitName="NONE" adapterClass="de.vrees.ecat.io.device.DeviceAdapterEL3204"
+								isActive="true" minVal="0" maxVal="10" />
+							<PdoEntryConfigs>
+								<PdoEntryConfig index="24608" subIndex="1"
+									bitLength="1" bitMask="0" description="Entry 1" />
+								<PdoEntryConfig index="24608" subIndex="2"
+									bitLength="1" bitMask="0" description="Entry 2" />
+								<PdoEntryConfig index="24608" subIndex="3"
+									bitLength="2" bitMask="0" description="Entry 3" />
+								<PdoEntryConfig index="24608" subIndex="5"
+									bitLength="2" bitMask="0" description="Entry 4" />
+								<PdoEntryConfig index="24608" subIndex="7"
+									bitLength="1" bitMask="0" description="Entry 5" />
+								<PdoEntryConfig index="0" subIndex="0" bitLength="7"
+									bitMask="0" description="Entry 6" />
+								<PdoEntryConfig index="6146" subIndex="7"
+									bitLength="1" bitMask="0" description="Entry 7" />
+								<PdoEntryConfig index="6146" subIndex="9"
+									bitLength="1" bitMask="0" description="Entry 8" />
+								<PdoEntryConfig index="24608" subIndex="17"
+									bitLength="16" bitMask="0" description="Entry 9" />
+							</PdoEntryConfigs>
+						</PdoConfig>
+						<PdoConfig logicalStartAddress="42">
+							<ioConfig ioName="aa4e45eb-bcbb-4043-b915-75ff5f381bea"
+								unitName="NONE" adapterClass="de.vrees.ecat.io.device.DeviceAdapterEL3204"
+								isActive="true" minVal="0" maxVal="10" />
+							<PdoEntryConfigs>
+								<PdoEntryConfig index="24624" subIndex="1"
+									bitLength="1" bitMask="0" description="Entry 1" />
+								<PdoEntryConfig index="24624" subIndex="2"
+									bitLength="1" bitMask="0" description="Entry 2" />
+								<PdoEntryConfig index="24624" subIndex="3"
+									bitLength="2" bitMask="0" description="Entry 3" />
+								<PdoEntryConfig index="24624" subIndex="5"
+									bitLength="2" bitMask="0" description="Entry 4" />
+								<PdoEntryConfig index="24624" subIndex="7"
+									bitLength="1" bitMask="0" description="Entry 5" />
+								<PdoEntryConfig index="0" subIndex="0" bitLength="7"
+									bitMask="0" description="Entry 6" />
+								<PdoEntryConfig index="6147" subIndex="7"
+									bitLength="1" bitMask="0" description="Entry 7" />
+								<PdoEntryConfig index="6147" subIndex="9"
+									bitLength="1" bitMask="0" description="Entry 8" />
+								<PdoEntryConfig index="24624" subIndex="17"
+									bitLength="16" bitMask="0" description="Entry 9" />
+							</PdoEntryConfigs>
+						</PdoConfig>
+					</PdoConfigs>
+				</SynchManConfig>
+			</SynchManConfigs>
+			<FmmuConfigs />
+			<SdoConfigs>
+				<SdoConfig description="Channel 1: PT1000" index="32768" subIndex="25" size="16" value="2" />
+				<SdoConfig description="Channel 2: PT1000" index="32784" subIndex="25" size="16" value="2" />
+			</SdoConfigs>
+		</SlaveConfig>
+	</SlaveConfigs>
+</JcatConf>

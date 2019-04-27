@@ -1,4 +1,4 @@
-package de.vrees.heatpump.heatpump.main;
+package de.vrees.heatpump.main;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

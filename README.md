@@ -1,18 +1,20 @@
-# heatpump
-Application for controlling the Heatpump machine. Written in Java and EtherCAT fieldbus technology 
+# HeatPump
+EtherCAT Application for controlling the Heatpump machine in Viktor's heating room. Written in Java and using the 
+EtherCAT fieldbus technology:
+ 
 SOEM: https://openethercatsociety.github.io/ and its 
-Java implementaion ihmc-ethercat-master:  https://github.com/ihmcrobotics/ihmc-ethercat-master.
 
+Java implementaion ihmc-ethercat-master:  https://github.com/ihmcrobotics/ihmc-ethercat-master.
 
 
 
 ## Setup
 
-#### Prerequirements SOEM and ihmc-ethercat-master 
+### Prerequirements SOEM and ihmc-ethercat-master 
 
 see https://github.com/ihmcrobotics/ihmc-ethercat-master
 
-### Linux Mint
+#### Linux Mint
 
 append the following to /etc/security/limits.conf
 ```
@@ -23,7 +25,7 @@ vrees       -       memlock unlimited
 ```
 see https://github.com/ihmcrobotics/ihmc-ethercat-master/issues/5
 
-### Avoid to run IntelliJ as root
+#### Avoid to run IntelliJ as root
 
 In order to create raw sockets root access is needed. Therefore the excecutable has to run as root. As an alternative
 you can set capabilities to the executable:

@@ -1,7 +1,7 @@
-package de.vrees.heatpump.heatpump.main;
+package de.vrees.heatpump.ethercat;
 
-import de.vrees.heatpump.heatpump.slaves.beckhoff.EL1008;
-import de.vrees.heatpump.heatpump.slaves.beckhoff.EL2008;
+import de.vrees.heatpump.ethercat.slaves.beckhoff.EL1008;
+import de.vrees.heatpump.ethercat.slaves.beckhoff.EL2008;
 import us.ihmc.etherCAT.master.EtherCATRealtimeThread;
 import us.ihmc.etherCAT.slaves.beckhoff.*;
 import us.ihmc.realtime.MonotonicTime;

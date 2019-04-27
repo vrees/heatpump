@@ -1,4 +1,4 @@
-package de.vrees.heatpump.heatpump.controller;
+package de.vrees.heatpump.controller;
 
 
 

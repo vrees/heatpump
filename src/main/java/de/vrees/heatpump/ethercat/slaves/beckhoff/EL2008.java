@@ -1,4 +1,4 @@
-package de.vrees.heatpump.heatpump.slaves.beckhoff;
+package de.vrees.heatpump.ethercat.slaves.beckhoff;
 
 import us.ihmc.etherCAT.master.RxPDO;
 import us.ihmc.etherCAT.master.Slave;
