@@ -22,25 +22,27 @@ repositories {
 	}
 }
 
-ext {
-	set('springStatemachineVersion', '2.0.1.RELEASE')
-}
+//ext {
+//	set('springStatemachineVersion', '2.0.1.RELEASE')
+//}
 
 dependencies {
+
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-	implementation 'org.springframework.boot:spring-boot-starter-websocket'
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
-	implementation 'org.springframework.session:spring-session-core'
-	implementation 'org.springframework.statemachine:spring-statemachine-starter'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//	testImplementation 'io.projectreactor:reactor-test'
+
+//	implementation 'org.springframework.statemachine:spring-statemachine-starter'
     compile group: 'us.ihmc', name: 'ihmc-ethercat-master', version: '0.11.2'
+//	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
 }
 
-dependencyManagement {
-	imports {
-		mavenBom "org.springframework.statemachine:spring-statemachine-bom:${springStatemachineVersion}"
-	}
-}
+//dependencyManagement {
+//	imports {
+//		mavenBom "org.springframework.statemachine:spring-statemachine-bom:${springStatemachineVersion}"
+//	}
+//}

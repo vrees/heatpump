@@ -1,12 +1,13 @@
 package de.vrees.heatpump.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.Instant;
 
 @AllArgsConstructor
-@Data
+@NoArgsConstructor
+//@Data
 public class ProcessdataResource {
 
     private Instant timestamp;

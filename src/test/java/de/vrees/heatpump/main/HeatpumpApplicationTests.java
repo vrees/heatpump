@@ -1,4 +1,4 @@
-package de.vrees.heatpump;
+package de.vrees.heatpump.main;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

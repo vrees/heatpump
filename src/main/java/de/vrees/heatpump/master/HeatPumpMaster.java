@@ -52,11 +52,11 @@ public class HeatPumpMaster extends EtherCATRealtimeThread {
         }
     }
 
-    public static void main(String[] args) {
-        HeatPumpMaster heatpumpExample = new HeatPumpMaster();
-        heatpumpExample.start();
-        heatpumpExample.join();
-    }
+//    public static void main(String[] args) {
+//        HeatPumpMaster heatpumpExample = new HeatPumpMaster();
+//        heatpumpExample.start();
+//        heatpumpExample.join();
+//    }
 
     @Override
     protected void workingCounterMismatch(int expected, int actual) {
