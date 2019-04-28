@@ -1,7 +1,7 @@
-package de.vrees.heatpump.ethercat;
+package de.vrees.heatpump.master;
 
-import de.vrees.heatpump.ethercat.slaves.beckhoff.EL1008;
-import de.vrees.heatpump.ethercat.slaves.beckhoff.EL2008;
+import de.vrees.heatpump.slaves.beckhoff.EL1008;
+import de.vrees.heatpump.slaves.beckhoff.EL2008;
 import us.ihmc.etherCAT.master.EtherCATRealtimeThread;
 import us.ihmc.etherCAT.slaves.beckhoff.*;
 import us.ihmc.realtime.MonotonicTime;
@@ -46,6 +46,9 @@ public class HeatPumpMaster extends EtherCATRealtimeThread {
             el2008.setOut2(true);
             el2008.setOut3(true);
             el2008.setOut4(true);
+
+
+            System.out.println("Slaves: " + getSlaves().get(1));
         }
     }
 
