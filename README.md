@@ -1,9 +1,7 @@
 # HeatPump
 EtherCAT Application for controlling the Heatpump machine in Viktor's heating room. Written in Java and using the 
-EtherCAT fieldbus technology:
- 
-SOEM: https://openethercatsociety.github.io/ and its 
-
+EtherCAT fieldbus technology:   
+SOEM: https://openethercatsociety.github.io/ and its   
 Java implementaion ihmc-ethercat-master:  https://github.com/ihmcrobotics/ihmc-ethercat-master.
 
 
@@ -34,5 +32,7 @@ sudo setcap cap_net_raw,cap_net_admin=eip /home/vrees/dev/tools/clion-2019.1.2/j
 sudo setcap cap_net_raw,cap_net_admin=eip /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
 sudo setcap cap_net_raw,cap_net_admin=eip /home/vrees/dev/git-repos/SOEM/cmake-build-debug/test/linux/slaveinfo/slaveinfo
 ```
-! don't forget to restart
+**! don't forget to restart**
+
+
 
