@@ -2,12 +2,16 @@ package de.vrees.heatpump.master;
 
 import de.vrees.heatpump.slaves.beckhoff.EL1008;
 import de.vrees.heatpump.slaves.beckhoff.EL2008;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
+import org.springframework.stereotype.Component;
 import us.ihmc.etherCAT.master.EtherCATRealtimeThread;
 import us.ihmc.etherCAT.slaves.beckhoff.*;
 import us.ihmc.realtime.MonotonicTime;
 import us.ihmc.realtime.PriorityParameters;
 
-public class HeatPumpMaster extends EtherCATRealtimeThread {
+@Component
+public class HeatPumpMaster extends EtherCATRealtimeThread implements ApplicationRunner {
     private final EK1100 ek1100 = new EK1100(0, 0); // Coupler
     private final EL1008 el1008 = new EL1008(0, 1); // 8-fach Digital Input
     private final EL2008 el2008 = new EL2008(0, 2); // 8-fach Digital Output
@@ -22,7 +26,6 @@ public class HeatPumpMaster extends EtherCATRealtimeThread {
         setRequireAllSlaves(false);
         enableTrace();
     }
-
 
     @Override
     protected void deadlineMissed() {
@@ -52,12 +55,6 @@ public class HeatPumpMaster extends EtherCATRealtimeThread {
         }
     }
 
-//    public static void main(String[] args) {
-//        HeatPumpMaster heatpumpExample = new HeatPumpMaster();
-//        heatpumpExample.start();
-//        heatpumpExample.join();
-//    }
-
     @Override
     protected void workingCounterMismatch(int expected, int actual) {
         System.out.println("workingCounterMismatch() actual=" + actual + ", expected=" + expected);
@@ -73,4 +70,16 @@ public class HeatPumpMaster extends EtherCATRealtimeThread {
         // TODO Auto-generated method stub
 
     }
+
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
+        start();
+        join();
+    }
+
+//    public static void main(String[] args) {
+//        HeatPumpMaster heatpumpExample = new HeatPumpMaster();
+//        heatpumpExample.start();
+//        heatpumpExample.join();
+//    }
 }
