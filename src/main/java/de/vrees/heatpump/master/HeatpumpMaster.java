@@ -2,12 +2,13 @@ package de.vrees.heatpump.master;
 
 import de.vrees.heatpump.slaves.beckhoff.EL1008;
 import de.vrees.heatpump.slaves.beckhoff.EL2008;
+import de.vrees.heatpump.slaves.beckhoff.EL3122;
 import lombok.Getter;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 import us.ihmc.etherCAT.master.EtherCATRealtimeThread;
-import us.ihmc.etherCAT.slaves.beckhoff.*;
+import us.ihmc.etherCAT.slaves.beckhoff.EK1100;
 import us.ihmc.realtime.MonotonicTime;
 import us.ihmc.realtime.PriorityParameters;
 
@@ -17,6 +18,9 @@ public class HeatpumpMaster extends EtherCATRealtimeThread implements Applicatio
     private final EK1100 ek1100 = new EK1100(0, 0); // Coupler
     private final EL1008 el1008 = new EL1008(0, 1); // 8-fach Digital Input
     private final EL2008 el2008 = new EL2008(0, 2); // 8-fach Digital Output
+    private final EL3122 el3122 = new EL3122(0, 3); // EL3122 | 2-Kanal-Analog-Eingangsklemme 4…20 mA, Differenzeingang, 16 Bit
+
+
     private int counter = 0;
 
     public HeatpumpMaster() {
@@ -24,7 +28,7 @@ public class HeatpumpMaster extends EtherCATRealtimeThread implements Applicatio
         registerSlave(ek1100);
         registerSlave(el1008);
         registerSlave(el2008);
-//      registerSlave(el4134);
+        registerSlave(el3122);
         setRequireAllSlaves(false);
         enableTrace();
     }
@@ -36,8 +40,9 @@ public class HeatpumpMaster extends EtherCATRealtimeThread implements Applicatio
 
     @Override
     protected void doControl() {
-        if (counter++ % 1000 == 0) {
-            System.out.println("Slaves: " + el1008 + ": " + el1008.toProcessdataString());
+        if (counter++ % 500 == 0) {
+//            System.out.println(el1008 + ": " + el1008.toProcessdataString());
+            System.out.println(el3122 + ": " + el3122.toProcessdataString());
 
             el2008.setOut1(true);
             el2008.setOut2(true);

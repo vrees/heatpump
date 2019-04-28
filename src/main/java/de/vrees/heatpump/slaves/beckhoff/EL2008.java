@@ -4,6 +4,12 @@ import us.ihmc.etherCAT.master.RxPDO;
 import us.ihmc.etherCAT.master.Slave;
 import us.ihmc.etherCAT.master.SyncManager;
 
+/**
+ * EL2008 | 8-Kanal-Digital-Ausgangsklemme 24 V DC, 0,5 A
+ *
+ * https://www.beckhoff.de/default.asp?ethercat/el2008.htm
+ *
+ */
 public class EL2008 extends Slave {
     private static final long vendorID = 0x00000002L;
     private static final long productCode = 0x07d83052L;

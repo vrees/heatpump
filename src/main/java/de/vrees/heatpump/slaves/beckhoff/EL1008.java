@@ -6,6 +6,12 @@ import us.ihmc.etherCAT.master.TxPDO;
 
 import java.util.StringJoiner;
 
+/**
+ * EL1008 | 8-Kanal-Digital-Eingangsklemme 24 V DC, 3 ms
+ *
+ * https://www.beckhoff.de/default.asp?ethercat/el1008.htm
+ *
+ */
 public class EL1008 extends Slave {
     private static final long vendorID = 0x00000002L;
     private static final long productCode = 0x03f03052L;
