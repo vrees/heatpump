@@ -2,6 +2,7 @@ package de.vrees.heatpump.master;
 
 import de.vrees.heatpump.slaves.beckhoff.EL1008;
 import de.vrees.heatpump.slaves.beckhoff.EL2008;
+import lombok.Getter;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -11,13 +12,14 @@ import us.ihmc.realtime.MonotonicTime;
 import us.ihmc.realtime.PriorityParameters;
 
 @Component
-public class HeatPumpMaster extends EtherCATRealtimeThread implements ApplicationRunner {
+@Getter
+public class HeatpumpMaster extends EtherCATRealtimeThread implements ApplicationRunner {
     private final EK1100 ek1100 = new EK1100(0, 0); // Coupler
     private final EL1008 el1008 = new EL1008(0, 1); // 8-fach Digital Input
     private final EL2008 el2008 = new EL2008(0, 2); // 8-fach Digital Output
     private int counter = 0;
 
-    public HeatPumpMaster() {
+    public HeatpumpMaster() {
         super("enp3s0", PriorityParameters.MAXIMUM_PRIORITY, new MonotonicTime(0, 1000000), true, 100000);
         registerSlave(ek1100);
         registerSlave(el1008);
