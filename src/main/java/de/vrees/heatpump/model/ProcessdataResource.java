@@ -73,15 +73,15 @@ public class ProcessdataResource {
     /**
      * EinAusQuittierung
      */
-    private boolean actionConfirmation;
+    private boolean userConfirmation;
 
     /**
-     * Stoerung Durchfluss
+     * Stoerung Durchfluss - minimale Druchlussmenge unterschritten
      */
     private boolean incidentFlow;
 
     /**
-     * Stoerung Verdichter / Motorschutzshalter
+     * Stoerung Verdichter / Motorschutzschalter
      */
     private boolean incidentCompressor;
 
@@ -114,6 +114,11 @@ public class ProcessdataResource {
      * Warnung Hochdruck (Soft-Wert falls gemessener Hochdruck über konfigurierte Grenze steigt)
      */
     private boolean warningHighPressure;
+
+    /**
+     * Alarm des Elektronischen Expansionsentils EEV
+     */
+    private boolean alarmExpansionValve;
 
 
 }

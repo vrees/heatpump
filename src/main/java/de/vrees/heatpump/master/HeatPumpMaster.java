@@ -35,23 +35,12 @@ public class HeatPumpMaster extends EtherCATRealtimeThread implements Applicatio
     @Override
     protected void doControl() {
         if (counter++ % 1000 == 0) {
-            System.out.println("Input1: " + el1008.getInput1()
-                    + ", Input2: " + el1008.getInput2()
-                    + ", Input3: " + el1008.getInput3()
-                    + ", Input4: " + el1008.getInput4()
-                    + ", Input5: " + el1008.getInput5()
-                    + ", Input6: " + el1008.getInput6()
-                    + ", Input7: " + el1008.getInput7()
-                    + ", Input8: " + el1008.getInput8()
-            );
+            System.out.println("Slaves: " + el1008 + ": " + el1008.toProcessdataString());
 
             el2008.setOut1(true);
             el2008.setOut2(true);
             el2008.setOut3(true);
             el2008.setOut4(true);
-
-
-            System.out.println("Slaves: " + getSlaves().get(1));
         }
     }
 
