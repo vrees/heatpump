@@ -3,7 +3,9 @@ package de.vrees.heatpump.master;
 import de.vrees.heatpump.slaves.beckhoff.EL1008;
 import de.vrees.heatpump.slaves.beckhoff.EL2008;
 import de.vrees.heatpump.slaves.beckhoff.EL3122;
+import de.vrees.heatpump.websocket.EchoHandler;
 import lombok.Getter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -15,10 +17,18 @@ import us.ihmc.realtime.PriorityParameters;
 @Component
 @Getter
 public class HeatpumpMaster extends EtherCATRealtimeThread implements ApplicationRunner {
+
+
     private final EK1100 ek1100 = new EK1100(0, 0); // Coupler
     private final EL1008 el1008 = new EL1008(0, 1); // 8-fach Digital Input
     private final EL2008 el2008 = new EL2008(0, 2); // 8-fach Digital Output
     private final EL3122 el3122 = new EL3122(0, 3); // EL3122 | 2-Kanal-Analog-Eingangsklemme 4…20 mA, Differenzeingang, 16 Bit
+
+
+    @Autowired
+    private EchoHandler sender;
+
+
 
 
     private int counter = 0;
@@ -35,12 +45,16 @@ public class HeatpumpMaster extends EtherCATRealtimeThread implements Applicatio
 
     @Override
     protected void deadlineMissed() {
-        System.out.println("deadlineMissed()");
+//        System.out.println("deadlineMissed()");
     }
 
     @Override
     protected void doControl() {
-        if (counter++ % 500 == 0) {
+        if (counter++ % 10000 == 0) {
+
+            // ProcessdataResource resource = mapper.map(el1008,el3122)
+            sender.sendProcessdata(el1008, el3122);
+
 //            System.out.println(el1008 + ": " + el1008.toProcessdataString());
             System.out.println(el3122 + ": " + el3122.toProcessdataString());
 
@@ -58,7 +72,7 @@ public class HeatpumpMaster extends EtherCATRealtimeThread implements Applicatio
 
     @Override
     protected void datagramLost() {
-        System.out.println("DATAGRAM LOST");
+//        System.out.println("DATAGRAM LOST");
     }
 
     @Override
