@@ -1,50 +1,79 @@
 package de.vrees.heatpump.websocket;
 
-import de.vrees.heatpump.mapper.ProcessdataMapper;
+import de.vrees.heatpump.master.HeatpumpMaster;
 import de.vrees.heatpump.model.ProcessdataResource;
-import de.vrees.heatpump.slaves.beckhoff.EL1008;
-import de.vrees.heatpump.slaves.beckhoff.EL3122;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.reactivestreams.Publisher;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.socket.WebSocketHandler;
 import org.springframework.web.reactive.socket.WebSocketMessage;
 import org.springframework.web.reactive.socket.WebSocketSession;
-import org.springframework.web.reactive.socket.server.WebSocketService;
+import reactor.core.publisher.ConnectableFlux;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.FluxSink;
 import reactor.core.publisher.Mono;
 
 @Slf4j
 @Component
-//@AllArgsConstructor
+@AllArgsConstructor
 public class EchoHandler implements WebSocketHandler {
 
-//    private WebSocketSession session;
+    private HeatpumpMaster master;
 
-    private WebSocketService webSocketService;
-
-    private ProcessdataMapper mapper;
 
     @Override
-    public Mono<Void> handle(WebSocketSession aSsession) {
+    public Mono<Void> handle(WebSocketSession webSocketSession) {
 
-//        session = aSsession;
 
-        Flux<WebSocketMessage> receiveFlux = aSsession.receive();
-        log.info("Received: " + receiveFlux);
+        Flux<ProcessdataResource> flux =
+                Flux.create(emitter -> {
+                    ProcessdataListener listener = new ProcessdataListener() {
+                        @Override
+                        public void publishData(ProcessdataResource event) {
 
-        Flux<WebSocketMessage> flux = receiveFlux
-                .map(msg -> "RECEIVED ON SERVER :: " + msg.getPayloadAsText())
-                .map(aSsession::textMessage);
+                        }
 
-        return aSsession.send(flux);
+                        @Override
+                        public void error(Throwable e) {
+
+                        }
+/*                        @Override
+                        public void publishData(ProcessdataResource event) {
+                            emitter.next(event);
+//                            if (event.isLast()) {
+//                                emitter.complete();
+//                            }
+                        }
+
+                        @Override
+                        public void error(Throwable e) {
+                            emitter.error(e);
+                        }*/
+                    };
+                    master.register(listener);
+                }, FluxSink.OverflowStrategy.BUFFER);
+
+
+        ConnectableFlux<ProcessdataResource> hot = flux.publish();
+
+        return webSocketSession.send(hot
+                .map(pd -> pd.toString())
+                .map(webSocketSession::textMessage))
+                .and(webSocketSession.receive()
+                        .map(WebSocketMessage::getPayloadAsText)
+                        .log());
     }
 
-    public Mono<Void> sendProcessdata(EL1008 el1008, EL3122 el3122) {
-        ProcessdataResource resource = mapper.map(el1008, el3122);
+/*
 
-        WebSocketMessage message = session.textMessage("Hallo Hallo");
-        Publisher<WebSocketMessage> pub = Mono.just(message);
-        return  session.send(pub);
+    @Override
+    public Mono<Void> handle(WebSocketSession session) {
+        return session
+                .send(session.receive()
+                        .map(msg -> "RECEIVED ON SERVER :: " + msg.getPayloadAsText())
+                        .map(session::textMessage)
+                );
     }
+*/
+
 }

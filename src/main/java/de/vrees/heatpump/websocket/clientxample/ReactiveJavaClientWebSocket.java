@@ -1,8 +1,6 @@
-package de.vrees.heatpump.websocket;
+package de.vrees.heatpump.websocket.clientxample;
 
-import org.springframework.web.reactive.socket.WebSocketHandler;
 import org.springframework.web.reactive.socket.WebSocketMessage;
-import org.springframework.web.reactive.socket.WebSocketSession;
 import org.springframework.web.reactive.socket.client.ReactorNettyWebSocketClient;
 import org.springframework.web.reactive.socket.client.WebSocketClient;
 import reactor.core.publisher.Mono;
@@ -16,7 +14,10 @@ public class ReactiveJavaClientWebSocket {
 
         WebSocketClient client = new ReactorNettyWebSocketClient();
 
-        client.execute(URI.create("ws://localhost:8080/event-emitter"), )
+        MyWebSocketHandler handler = new MyWebSocketHandler();
+        client.execute(URI.create("ws://localhost:8080/event-emitter"), handler).block(Duration.ofSeconds(10L));
+
+
 
         client.execute(
                 URI.create("ws://localhost:8080/event-emitter"),
@@ -29,11 +30,5 @@ public class ReactiveJavaClientWebSocket {
                 .block(Duration.ofSeconds(10L));
     }
 
-    public class MyWebSocketHandler implements WebSocketHandler {
 
-        @Override
-        public Mono<Void> handle(WebSocketSession session) {
-            return session.send(Mono.just(session.textMessage("event-spring-reactive-client-websocket")));
-        }
-    }
 }

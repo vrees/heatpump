@@ -1,11 +1,12 @@
 package de.vrees.heatpump.master;
 
+import de.vrees.heatpump.mapper.ProcessdataMapper;
+import de.vrees.heatpump.model.ProcessdataResource;
 import de.vrees.heatpump.slaves.beckhoff.EL1008;
 import de.vrees.heatpump.slaves.beckhoff.EL2008;
 import de.vrees.heatpump.slaves.beckhoff.EL3122;
-import de.vrees.heatpump.websocket.EchoHandler;
+import de.vrees.heatpump.websocket.ProcessdataListener;
 import lombok.Getter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -25,10 +26,9 @@ public class HeatpumpMaster extends EtherCATRealtimeThread implements Applicatio
     private final EL3122 el3122 = new EL3122(0, 3); // EL3122 | 2-Kanal-Analog-Eingangsklemme 4…20 mA, Differenzeingang, 16 Bit
 
 
-    @Autowired
-    private EchoHandler sender;
+    private ProcessdataMapper mapper;
 
-
+    private ProcessdataListener processdataListener;
 
 
     private int counter = 0;
@@ -53,7 +53,11 @@ public class HeatpumpMaster extends EtherCATRealtimeThread implements Applicatio
         if (counter++ % 10000 == 0) {
 
             // ProcessdataResource resource = mapper.map(el1008,el3122)
-            sender.sendProcessdata(el1008, el3122);
+
+            if (processdataListener != null) {
+                ProcessdataResource resource = mapper.map(el1008, el3122);
+                processdataListener.publishData(resource);
+            }
 
 //            System.out.println(el1008 + ": " + el1008.toProcessdataString());
             System.out.println(el3122 + ": " + el3122.toProcessdataString());
@@ -87,9 +91,10 @@ public class HeatpumpMaster extends EtherCATRealtimeThread implements Applicatio
         join();
     }
 
-//    public static void main(String[] args) {
-//        HeatPumpMaster heatpumpExample = new HeatPumpMaster();
-//        heatpumpExample.start();
-//        heatpumpExample.join();
-//    }
+    public void register(ProcessdataListener listener) {
+        processdataListener = listener;
+
+    }
+
+
 }

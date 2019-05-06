@@ -2,7 +2,6 @@ package de.vrees.heatpump.config;
 
 import de.vrees.heatpump.websocket.EchoHandler;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
@@ -21,7 +20,6 @@ import java.util.Map;
 @AllArgsConstructor
 public class WebsocketConfig {
 
-    @Autowired
     private EchoHandler webSocketHandler;
 
     @Bean
