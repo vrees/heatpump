@@ -12,6 +12,13 @@ Java implementaion ihmc-ethercat-master:  https://github.com/ihmcrobotics/ihmc-e
 
 see https://github.com/ihmcrobotics/ihmc-ethercat-master
 
+### Installing SOEM
+
+sudo add-apt-repository ppa:halodirobotics/ppa
+sudo apt update
+sudo apt install soem
+
+
 #### Linux Mint
 
 append the following to /etc/security/limits.conf
@@ -29,11 +36,31 @@ see https://github.com/ihmcrobotics/ihmc-ethercat-master/issues/5
 In order to create raw sockets root access is needed. Therefore the excecutable has to run as root. As an alternative
 you can set capabilities to the executable:
 ```
-sudo setcap cap_net_raw,cap_net_admin=eip /home/vrees/dev/tools/clion-2019.1.2/jre64/bin/java
 sudo setcap cap_net_raw,cap_net_admin=eip /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
-sudo setcap cap_net_raw,cap_net_admin=eip /home/vrees/dev/git-repos/SOEM/cmake-build-debug/test/linux/slaveinfo/slaveinfo
+sudo setcap cap_net_raw,cap_net_admin=eip /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+sudo setcap cap_net_raw,cap_net_admin=eip /usr/lib/jvm/adoptopenjdk-11-hotspot-amd64/bin/java
+sudo setcap cap_net_raw,cap_net_admin=eip /home/vrees/.sdkman/candidates/java/current/bin/java
+
+echo '/home/vrees/.sdkman/candidates/java/11.0.2-open/lib/jli' | sudo tee -a /etc/ld.so.conf.d/java
+
 ```
 **! don't forget to restart**
 
 
+### Compiling C library and SWIG wrapper
+Requirements
+
+    CMake  (sudo apt install cmake)
+    OpenJDK 8  (--> openjdk11)
+    Swig 3.0.8 or higher. (sudo apt install swig)
+
+A gradle wrapper is provided, optionally you can use your system gradle by replacing "./gradlew" with gradle.
+
+    cd ihmc-ethercat-master
+    mkdir build
+    cd build
+    cmake -DCMAKE_BUILD_TYPE=Release ..
+    make
+    ../gradlew publishToMavenLocal -Ptarget=JAVA   (gradle publishToMavenLocal -Ptarget=JAVA)
+    ../gradlew publishToMavenLocal -Ptarget=PLATFORM
 
