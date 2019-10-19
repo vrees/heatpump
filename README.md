@@ -37,6 +37,7 @@ In order to create raw sockets root access is needed. Therefore the excecutable 
 you can set capabilities to the executable:
 ```
 sudo setcap cap_net_raw,cap_net_admin=eip /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+sudo setcap cap_net_raw,cap_net_admin=eip /usr/lib/jvm/java-8-openjdk-amd64/bin/java
 sudo setcap cap_net_raw,cap_net_admin=eip /usr/lib/jvm/java-11-openjdk-amd64/bin/java
 sudo setcap cap_net_raw,cap_net_admin=eip /usr/lib/jvm/adoptopenjdk-11-hotspot-amd64/bin/java
 sudo setcap cap_net_raw,cap_net_admin=eip /home/vrees/.sdkman/candidates/java/current/bin/java
@@ -44,6 +45,17 @@ sudo setcap cap_net_raw,cap_net_admin=eip /home/vrees/.sdkman/candidates/java/cu
 echo '/home/vrees/.sdkman/candidates/java/11.0.2-open/lib/jli' | sudo tee -a /etc/ld.so.conf.d/java
 
 ```
+
+https://github.com/ihmcrobotics/ihmc-ethercat-master/issues/5
+
+If that isn't a feasible solution, there is a workaround, but we don't suggest that you use it on a production target. You can modify the user's PAM ulimit limits. Edit the file **/etc/security/limits.conf** with the following additions:
+```
+vrees       soft    cpu     unlimited
+vrees       -       rtprio  100
+vrees       -       nice    40
+vrees       -       memlock unlimited
+```
+
 **! don't forget to restart**
 
 
